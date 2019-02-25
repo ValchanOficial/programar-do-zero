@@ -21,11 +21,16 @@
 			var efeitoRaquete = 0.3;
 			var pontuacaoJogador1 = 0;
 			var pontuacaoJogador2 = 0;
+			var velocidadeJogador2 = 5;
 			//function
 			window.onload = function(){
 				setInterval(executar,1000/30); //30ms
 			}
-
+			//seguir mouse do Jogador 1
+			folhaDesenho.addEventListener('mousemove', function(e){
+				posicaoJogador1 = e.clientY - alturaRaquete / 2;
+			});
+			//base
 			function executar(){
 				//campo
 				areaDesenho.fillStyle = "#286047";
@@ -37,6 +42,9 @@
 				areaDesenho.fillRect(0,posicaoJogador1,espessuraRaquete,alturaRaquete);			
 				//raquete2
 				areaDesenho.fillRect(larguraCampo - larguraLinha,posicaoJogador2,espessuraRaquete,alturaRaquete);
+				//escrever a pontuação dos jogadores
+				areaDesenho.fillText("Humano - " + pontuacaoJogador1 + " pontos", 100, 100);
+				areaDesenho.fillText("Computador - " + pontuacaoJogador2 + " pontos", larguraCampo-200,100);
 				//bola
 				areaDesenho.fillRect(posicaoBolaX - diametroBola /2,posicaoBolaY - diametroBola/2,diametroBola,diametroBola);
 				posicaoBolaX = posicaoBolaX + velocidadeBolaX;
@@ -60,7 +68,10 @@
 						//ponto para Jogador 2
 						pontuacaoJogador2++;
 						//coloca a bola no centro
-
+						posicaoBolaX = larguraCampo /2;
+						posicaoBolaY = alturaCampo / 2;
+						velocidadeBolaX = -velocidadeBolaX;
+						velocidadeBolaY =3;
 					}
 				}
 				//verifica se o Jogador 1 fez um ponto
@@ -74,8 +85,17 @@
 						//ponto para Jogador 1
 						pontuacaoJogador1++;
 						//coloca a bola no centro
+						posicaoBolaX = larguraCampo /2;
+						posicaoBolaY = alturaCampo / 2;
+						velocidadeBolaX = -velocidadeBolaX;
+						velocidadeBolaY =3;
 						
 					}
+				}
+				if(posicaoJogador2 + alturaRaquete / 2 < posicaoBolaY){
+					posicaoJogador2 = posicaoJogador2 + velocidadeJogador2;
+				} else {
+					posicaoJogador2 = posicaoJogador2 - velocidadeJogador2;
 				}
 			}
 		</script>

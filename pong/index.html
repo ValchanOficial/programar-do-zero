@@ -5,26 +5,34 @@
 	</head>
 	<body>
 		<canvas id="folha" width="600" height="500"/>
-		<script type="text/javascript">
-			var folhaDesenho = document.getElementById("folha");
-			var areaDesenho = folhaDesenho.getContext("2d");
-			var larguraCampo = 600;
-			var alturaCampo = 500;
-			var larguraLina = 10;
-			var alturaBola = 10;
-			var alturaRaquete = 60;
-			//campo
-			areaDesenho.fillStyle = "#286047";
-			areaDesenho.fillRect(0,0,larguraCampo,alturaCampo); //x,y,larg,alt
-			//linha
-			areaDesenho.fillStyle = "#FFFFFF";
-			areaDesenho.fillRect(larguraCampo/2 - larguraLina/2,0,larguraLina,alturaCampo);
-			//raquete1
-			areaDesenho.fillRect(0,30,larguraLina,alturaRaquete);			
-			//raquete2
-			areaDesenho.fillRect(larguraCampo - larguraLina,300,larguraLina,alturaRaquete);
-			//bola
-			areaDesenho.fillRect(30,60,alturaBola,alturaBola);
+		<script type="text/javascript">			
+			window.onload = function(){
+				setInterval(executar,1000/30); //30ms
+			}
+			var posicaoBolaX = posicaoBolaY = 20;
+			function executar(){
+				var folhaDesenho = document.getElementById("folha");
+				var areaDesenho = folhaDesenho.getContext("2d");
+				var larguraCampo = 600;
+				var alturaCampo = 500;
+				var larguraLinha = 10;
+				var diametroBola = 10;
+				var alturaRaquete = 60;
+				//campo
+				areaDesenho.fillStyle = "#286047";
+				areaDesenho.fillRect(0,0,larguraCampo,alturaCampo); //x,y,larg,alt
+				//linha
+				areaDesenho.fillStyle = "#FFFFFF";
+				areaDesenho.fillRect(larguraCampo/2 - larguraLinha/2,0,larguraLinha,alturaCampo);
+				//raquete1
+				areaDesenho.fillRect(0,30,larguraLinha,alturaRaquete);			
+				//raquete2
+				areaDesenho.fillRect(larguraCampo - larguraLinha,300,larguraLinha,alturaRaquete);
+				//bola
+				areaDesenho.fillRect(posicaoBolaX - diametroBola /2,posicaoBolaY - diametroBola/2,diametroBola,diametroBola);
+				posicaoBolaX++;
+				posicaoBolaY++;
+			}
 		</script>
 	</body>
 </html>

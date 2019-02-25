@@ -5,19 +5,23 @@
 	</head>
 	<body>
 		<canvas id="folha" width="600" height="500"/>
-		<script type="text/javascript">			
+		<script type="text/javascript">	
+			
+			var folhaDesenho = document.getElementById("folha");
+			var areaDesenho = folhaDesenho.getContext("2d");
+			var larguraCampo = 600;
+			var alturaCampo = 500;
+			var larguraLinha = 10;
+			var diametroBola = 10;
+			var posicaoBolaX = posicaoBolaY = 20;
+			var velocidadeBolaX = velocidadeBolaY = 5;
+			var alturaRaquete = 60;
+
 			window.onload = function(){
 				setInterval(executar,1000/30); //30ms
 			}
-			var posicaoBolaX = posicaoBolaY = 20;
+
 			function executar(){
-				var folhaDesenho = document.getElementById("folha");
-				var areaDesenho = folhaDesenho.getContext("2d");
-				var larguraCampo = 600;
-				var alturaCampo = 500;
-				var larguraLinha = 10;
-				var diametroBola = 10;
-				var alturaRaquete = 60;
 				//campo
 				areaDesenho.fillStyle = "#286047";
 				areaDesenho.fillRect(0,0,larguraCampo,alturaCampo); //x,y,larg,alt
@@ -30,8 +34,16 @@
 				areaDesenho.fillRect(larguraCampo - larguraLinha,300,larguraLinha,alturaRaquete);
 				//bola
 				areaDesenho.fillRect(posicaoBolaX - diametroBola /2,posicaoBolaY - diametroBola/2,diametroBola,diametroBola);
-				posicaoBolaX++;
-				posicaoBolaY++;
+				posicaoBolaX = posicaoBolaX + velocidadeBolaX;
+				posicaoBolaY = posicaoBolaY + velocidadeBolaY;
+				//verifica lateral superior
+				if(posicaoBolaY < 0 && velocidadeBolaY < 0){
+					velocidadeBolaY = -velocidadeBolaY;
+				}
+				//verifica lateral inferior
+				if(posicaoBolaY > alturaCampo && velocidadeBolaY > 0){
+					velocidadeBolaY = -velocidadeBolaY;
+				}
 			}
 		</script>
 	</body>

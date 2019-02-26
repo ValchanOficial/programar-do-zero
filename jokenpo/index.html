@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>DevSamurai - JoKenPô</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<style type="text/css">
+			*{
+				font-family: Helvetica Neue, Helvetica, Arial;
+				font-weight: 400;
+				cursor: default;
+			}
+			#main{
+
+			}
+			#title {
+				text-align: center;
+				color: #2d3436;
+			}
+			#placar{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			#msgm{
+				background-color: #635e72;
+				text-align: center;
+				font-size: 24px;
+				color: #FFFFFF;
+				border-radius: 5px;
+				margin: 20px 0;
+				padding: 20px;
+			}
+			#jogador{
+				background-color: #ff7675;
+			}
+			#vs{
+				font-size: 80px;
+				padding: 0 40px;
+			}
+			#computador{
+				background-color: #3498db;
+			}
+			#jogador, #computador {
+				position: relative;
+				flex-grow: 1;
+				border-radius: 5px;
+				color: #FFFFFF;
+				padding: 20px;
+			}
+			#jogador h2, #computador h2 {
+				margin: 0;
+				padding: 0;
+			}
+			#jogador-nome, #computador-nome {
+				font-size: 24px;
+			}
+			#computador-nome {
+				text-align: right;
+			}
+			#jogador-pontos, #computador-pontos {
+				position: absolute;
+				top: 8px;
+				font-size: 48px;
+			}
+			#jogador-pontos {
+				right: 20px;
+			}
+			#jogador #jogador-escolha, #computador #computador-escolha {
+				list-style: none;
+				text-align: center;
+				margin: 30px 0 0 0;
+				padding: 0;
+			}
+			#jogador #jogador-escolha li, #computador #computador-escolha li {
+				display: inline;
+				padding: 0 15px;
+			}
+			#jogador #jogador-escolha a, #computador #computador-escolha a {
+				opacity: .2;
+			}
+			#jogador #jogador-escolha a:hover, #computador #computador-escolha a:hover {
+				opacity: 1;
+			}
+			#jogador #jogador-escolha img, #computador #computador-escolha img {
+				max-width: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<h1 id="title">Pedra, Papel e Tesoura</h1>
+			<div id="placar">
+				<div id="jogador">
+					<h2 id="jogador-nome">Valchan</h2>
+					<span id="jogador-pontos">0</span>
+					<ul id="jogador-escolha">
+						<li><a id="jogador-escolha1"><img src="img/pedra.png"></a></li>
+						<li><a id="jogador-escolha2"><img src="img/papel.png"></a></li>
+						<li><a id="jogador-escolha3"><img src="img/tesoura.png"></a></li>
+					</ul>
+				</div>
+				<div id="vs">vs</div>
+				<div id="computador">
+					<h2 id="computador-nome">Computador</h2>
+					<span id="computador-pontos">0</span>
+					<ul id="computador-escolha">
+						<li><a id="computador-escolha1"><img src="img/pedra.png"></a></li>
+						<li><a id="computador-escolha2"><img src="img/papel.png"></a></li>
+						<li><a id="computador-escolha3"><img src="img/tesoura.png"></a></li>
+					</ul>
+				</div>				
+			</div>
+			<div id="msgm">mensagem</div>
+		</div>
+	</body>
+</html>
